@@ -52,6 +52,57 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+                // Custom colors for AI Education site
+                teal: {
+                    50: '#f0fdfa',
+                    100: '#ccfbf1',
+                    200: '#99f6e4',
+                    300: '#5eead4',
+                    400: '#2dd4bf',
+                    500: '#14b8a6',
+                    600: '#0d9488',
+                    700: '#0f766e',
+                    800: '#115e59',
+                    900: '#134e4a',
+                    950: '#042f2e',
+                },
+                mint: {
+                    50: '#f1fcf9',
+                    100: '#d0f3ea',
+                    200: '#a1e9d9',
+                    300: '#6dd9c3',
+                    400: '#40c4ac',
+                    500: '#26ab93',
+                    600: '#1e8a78',
+                    700: '#1d6f63',
+                    800: '#1d5951',
+                    900: '#1c4a44',
+                },
+                emerald: {
+                    50: '#ecfdf5',
+                    100: '#d1fae5',
+                    200: '#a7f3d0',
+                    300: '#6ee7b7',
+                    400: '#34d399',
+                    500: '#10b981',
+                    600: '#059669',
+                    700: '#047857',
+                    800: '#065f46',
+                    900: '#064e3b',
+                    950: '#022c22',
+                },
+                softBlue: {
+                    100: '#e9f0fd',
+                    300: '#d3e4fd',
+                    500: '#a8c7fa',
+                    700: '#7ea7f5',
+                },
+                softOrange: {
+                    100: '#fef2ea',
+                    300: '#fec6a1',
+                    500: '#fda86a',
+                    700: '#f98b29',
+                },
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -84,11 +135,51 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'fade-in': {
+					'0%': { opacity: '0', transform: 'translateY(10px)' },
+					'100%': { opacity: '1', transform: 'translateY(0)' }
+				},
+				'fade-out': {
+					'0%': { opacity: '1', transform: 'translateY(0)' },
+					'100%': { opacity: '0', transform: 'translateY(10px)' }
+				},
+				'scale-in': {
+					'0%': { transform: 'scale(0.95)', opacity: '0' },
+					'100%': { transform: 'scale(1)', opacity: '1' }
+				},
+				'scale-out': {
+					from: { transform: 'scale(1)', opacity: '1' },
+					to: { transform: 'scale(0.95)', opacity: '0' }
+				},
+				'slide-in-right': {
+					'0%': { transform: 'translateX(100%)' },
+					'100%': { transform: 'translateX(0)' }
+				},
+				'slide-out-right': {
+					'0%': { transform: 'translateX(0)' },
+					'100%': { transform: 'translateX(100%)' }
+				},
+				'slide-in-bottom': {
+					'0%': { transform: 'translateY(20px)', opacity: '0' },
+					'100%': { transform: 'translateY(0)', opacity: '1' }
+				},
+				'pulse-gentle': {
+					'0%, 100%': { opacity: '1' },
+					'50%': { opacity: '0.7' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-in': 'fade-in 0.5s ease-out forwards',
+				'fade-out': 'fade-out 0.5s ease-out forwards',
+				'scale-in': 'scale-in 0.3s ease-out forwards',
+				'scale-out': 'scale-out 0.3s ease-out forwards',
+				'slide-in-right': 'slide-in-right 0.3s ease-out forwards',
+				'slide-out-right': 'slide-out-right 0.3s ease-out forwards',
+				'slide-in-bottom': 'slide-in-bottom 0.5s ease-out forwards',
+				'pulse-gentle': 'pulse-gentle 3s ease-in-out infinite'
 			}
 		}
 	},
