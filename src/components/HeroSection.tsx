@@ -8,7 +8,6 @@ export function HeroSection() {
   const titleReveal = useScrollReveal();
   const subtitleReveal = useScrollReveal({ delay: 200 });
   const buttonsReveal = useScrollReveal({ delay: 400 });
-  const previewReveal = useScrollReveal({ delay: 600 });
   
   const scrollToFindings = () => {
     const element = document.getElementById("findings");
@@ -60,33 +59,15 @@ export function HeroSection() {
             <Button onClick={scrollToFindings} size="lg" className="gap-2">
               Explore Findings <ArrowDown className="h-4 w-4" />
             </Button>
-            <Button variant="outline" size="lg">
-              Read Full Report
+            <Button variant="outline" size="lg" asChild>
+              <a 
+                href="https://www.canva.com/design/DAGlh-BLYCY/QBMthFfaFP-pFnD-oyXOJQ/edit"
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+                Read Full Report
+              </a>
             </Button>
-          </div>
-
-          {/* Preview section */}
-          <div 
-            ref={previewReveal.ref as React.RefObject<HTMLDivElement>}
-            className={`mt-16 transition-all duration-700 ${
-              previewReveal.isVisible ? 'opacity-100' : 'opacity-0 translate-y-10'
-            }`}
-          >
-            <h2 className="text-2xl font-semibold mb-4">Preview Report</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {[1, 2, 3].map((item) => (
-                <div
-                  key={item}
-                  className="aspect-video bg-card rounded-lg shadow-lg overflow-hidden border"
-                >
-                  <div className="h-full w-full bg-gradient-to-br from-emerald-50 to-teal-100 dark:from-emerald-900/20 dark:to-teal-800/20 flex items-center justify-center">
-                    <span className="text-lg font-medium text-muted-foreground">
-                      Report Screenshot {item}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </div>
