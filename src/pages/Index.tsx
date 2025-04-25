@@ -1,8 +1,8 @@
 
 import { Header } from "@/components/Header";
 import { HeroSection } from "@/components/HeroSection";
-import { FindingsSection } from "@/components/FindingsSection";
 import { MethodologySection } from "@/components/MethodologySection";
+import { FindingsSection } from "@/components/FindingsSection";
 import { ConnectSection } from "@/components/ConnectSection";
 import { Footer } from "@/components/Footer";
 
