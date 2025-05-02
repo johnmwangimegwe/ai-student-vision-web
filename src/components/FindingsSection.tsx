@@ -2,9 +2,6 @@
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
-import { BarChart } from "./charts/BarChart";
-import { PieChart } from "./charts/PieChart";
-import { FunnelChart } from "./charts/FunnelChart";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 export function FindingsSection() {
@@ -12,47 +9,24 @@ export function FindingsSection() {
   const titleReveal = useScrollReveal();
   const tabsReveal = useScrollReveal({ delay: 300 });
 
-  // Data for charts
-  const knowledgeSourcesData = [
-    { name: "Internet", value: 44 },
-    { name: "Scientific Books", value: 19 },
-    { name: "Social Media", value: 24 },
-    { name: "Family & Friends", value: 11 },
-  ];
-
-  const societalEffectsData = [
-    { name: "Problem Solving", value: 66 },
-    { name: "Job Replacement", value: 35 },
-    { name: "AI Ruling Society", value: 8 },
-  ];
-
-  const economicImpactsData = [
-    { name: "Economic Growth", value: 36 },
-    { name: "Job Loss Concerns", value: 31 },
-    { name: "Economic Crisis Fears", value: 9 },
-  ];
-
-  const sectorImpactData = [
-    { name: "Medicine", value: 80 },
-    { name: "Education", value: 67 },
-    { name: "Construction", value: 55 },
-    { name: "Agriculture", value: 51 },
-    { name: "Marketing", value: 36 },
-    { name: "Arts", value: 13 },
-  ];
-
-  const selfReportedAwarenessData = [
-    { name: "Rating 10", value: 7 },
-    { name: "Rating 9", value: 10 },
-    { name: "Rating 8", value: 19 },
-    { name: "Rating 7", value: 19 },
-    { name: "Rating 6", value: 19 },
-    { name: "Rating 5", value: 19 },
-    { name: "Rating 4", value: 3 },
-    { name: "Rating 3", value: 3 },
-    { name: "Rating 2", value: 0 },
-    { name: "Rating 1", value: 1 },
-  ];
+  // Function to safely render Infogram embeds
+  const InfographEmbed = ({ dataId, title }: { dataId: string, title: string }) => {
+    return (
+      <div className="infogram-container w-full my-4">
+        <div 
+          className="infogram-embed" 
+          data-id={dataId} 
+          data-type="interactive" 
+          data-title={title}
+        ></div>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `!function(e,n,i,s){var d="InfogramEmbeds";var o=e.getElementsByTagName(n)[0];if(window[d]&&window[d].initialized)window[d].process&&window[d].process();else if(!e.getElementById(i)){var r=e.createElement(n);r.async=1,r.id=i,r.src=s,o.parentNode.insertBefore(r,o)}}(document,"script","infogram-async","https://e.infogram.com/js/dist/embed-loader-min.js");`
+          }}
+        />
+      </div>
+    );
+  };
 
   return (
     <section id="findings" className="py-20 bg-background">
@@ -91,23 +65,20 @@ export function FindingsSection() {
                   <CardTitle>1: Students' Level of Knowledge About AI and Common Sources</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="grid md:grid-cols-2 gap-8">
+                  <div className="grid md:grid-cols-1 gap-8">
                     <div>
-                      <h3 className="text-xl font-semibold mb-4">Self-Reported Awareness (Scale 1-10)</h3>
-                      <BarChart 
-                        data={selfReportedAwarenessData} 
-                        title="Students' Self-Reported Awareness of AI" 
-                        colors={['#10b981']}
+                      <InfographEmbed 
+                        dataId="00ab4831-845f-4576-82f1-5f89a4c2138f" 
+                        title="Students' Self-Reported Awareness of Artificial Intelligence (Scale 1–10)" 
                       />
                     </div>
                     <div>
-                      <h3 className="text-xl font-semibold mb-4">Information Sources About AI</h3>
-                      <PieChart 
-                        data={knowledgeSourcesData} 
-                        title="Common Sources Students Use to Learn About AI" 
+                      <InfographEmbed 
+                        dataId="251f8ca3-5792-434e-8794-ef01456afee6" 
+                        title="Common sources students use to learn about AI" 
                       />
                     </div>
-                    <div className="md:col-span-2">
+                    <div className="md:col-span-1">
                       <div className="bg-secondary/50 rounded-lg p-6">
                         <h3 className="text-xl font-semibold mb-4">Key Insight</h3>
                         <p className="mb-4">
@@ -128,15 +99,14 @@ export function FindingsSection() {
                   <CardTitle>2: Attitudes Toward AI's Societal Effects</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="grid md:grid-cols-2 gap-8">
-                    <div className="md:col-span-2">
-                      <BarChart 
-                        data={societalEffectsData} 
+                  <div className="grid md:grid-cols-1 gap-8">
+                    <div>
+                      <InfographEmbed 
+                        dataId="2b528cc1-4def-47c1-b080-929809f9922b" 
                         title="Distribution of Student Opinions on the Societal Effects of AI" 
-                        colors={['#0d9488']}
                       />
                     </div>
-                    <div className="md:col-span-2">
+                    <div className="md:col-span-1">
                       <div className="bg-secondary/50 rounded-lg p-6">
                         <h3 className="text-xl font-semibold mb-4">Key Insight</h3>
                         <p className="mb-4">
@@ -157,15 +127,14 @@ export function FindingsSection() {
                   <CardTitle>3: Perceived Economic Impacts of AI</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="grid md:grid-cols-2 gap-8">
-                    <div className="md:col-span-2">
-                      <BarChart 
-                        data={economicImpactsData} 
+                  <div className="grid md:grid-cols-1 gap-8">
+                    <div>
+                      <InfographEmbed 
+                        dataId="5ab487ab-cd7a-4e04-a57f-0825a773c210" 
                         title="Student Opinions on Economic Impacts of AI" 
-                        colors={['#115e59']}
                       />
                     </div>
-                    <div className="md:col-span-2">
+                    <div className="md:col-span-1">
                       <div className="bg-secondary/50 rounded-lg p-6">
                         <h3 className="text-xl font-semibold mb-4">Key Insight</h3>
                         <p className="mb-4">
@@ -186,14 +155,14 @@ export function FindingsSection() {
                   <CardTitle>4: Areas Where Students Believe AI Will Have Biggest Impact</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="grid md:grid-cols-2 gap-8">
-                    <div className="md:col-span-2">
-                      <FunnelChart 
-                        data={sectorImpactData} 
+                  <div className="grid md:grid-cols-1 gap-8">
+                    <div>
+                      <InfographEmbed 
+                        dataId="9c961749-6180-466e-b99a-4458497457b3" 
                         title="Where Students Believe AI Will Make the Biggest Impact" 
                       />
                     </div>
-                    <div className="md:col-span-2">
+                    <div className="md:col-span-1">
                       <div className="bg-secondary/50 rounded-lg p-6">
                         <h3 className="text-xl font-semibold mb-4">Key Insight</h3>
                         <p className="mb-4">
